@@ -42,6 +42,9 @@ with open(f'{splice_sites}_spliced_genes.fa', 'a') as o:
         else:
             o.write(f'>{gene_name}\n no splice site found\n')
 
+t.close()
+o.close()
+
 
 
 
