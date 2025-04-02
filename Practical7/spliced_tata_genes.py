@@ -36,9 +36,9 @@ with open('tata_genes.fa', 'r') as t:
 with open(f'{splice_sites}_spliced_genes.fa', 'a') as o:
     for gene_name, spliced_genes in spliced_genes_dict.items():
         if re.search(fr'{donor}.*?{acceptor}', spliced_genes.upper()):
-            o.write(f'>{gene_name}\n{spliced_genes}\n')
             tata_box_count +=  len(re.findall(r'TATA[AT]A[AT]', spliced_genes.upper()))
-            print(f'{gene_name} has {tata_box_count} tata box sites')           
+            o.write(f'>{gene_name}\t{tata_box_count} tata box sites\n{spliced_genes}\n')
+            tata_box_count = 0          
         else:
             o.write(f'>{gene_name}\n no splice site found\n')
 
